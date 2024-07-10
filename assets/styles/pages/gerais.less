@@ -1,0 +1,199 @@
+:root {
+    // Paleta de Cores
+    --laranja-primario: #FF914D;
+    --azul-primario: #1C3C64;
+    --amarelo-primario: #FFB422;
+    --branco: #FFFFFF;
+    --cinza1: #F6F6F6;
+    --cinza2: #E6E6E6;
+    --cinza3: #CCCCCC;
+    --cinza4: #848484;
+    --cinza5: #747474;
+    --preto:  #000000;
+
+    // Font Sizes
+    --size-header1: 32px;
+    --size-header1-mobile: 20px;
+
+    --size-header2: 24px;
+    --size-header2-mobile: 17px;
+
+    --size-header3: 21px;
+    --size-header3-mobile: 16px;
+
+    --size-botao: 21px;
+    --size-botao-mobile: 14px;
+
+    --size-paragrafo: 19px;
+    --size-paragrafo-mobile: 16px;
+
+    --size-placeholder: 19px;
+    --size-placeholder-mobile: 15px;
+
+    --size-informacao-extra: 11px;
+    --size-informacao-extra-mobile: 8px;
+
+    --size-descricao: 12px;
+    --size-descricao-mobile: 10px;
+
+    // Font Weights
+
+    --weight-header1: 700;
+    --weight-header1-mobile: 700;
+
+    --weight-header2: 600;
+    --weight-header2-mobile: 600;
+
+    --weight-header3: 500;
+    --weight-header3-mobile: 500;
+
+    --weight-botao: 500;
+    --weight-botao-mobile: 500;
+
+    --weight-paragrafo: 400;
+    --weight-paragrafo-mobile: 400;
+
+    --weight-placeholder: 400;
+    --weight-placeholder-mobile: 400;
+
+    --weight-informacao-extra: 400;
+    --weight-informacao-extra-mobile: 400;
+
+    --weight-descricao: 500;
+    --weight-descricao-mobile: 500;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--preto);
+}
+
+p {
+    font-size: var(--size-paragrafo);
+    font-weight: var(--weight-paragrafo);
+}
+
+h1 {
+    font-size: var(--size-header1);
+    font-weight: var(--weight-header1);
+}
+
+h2 {
+    font-size: var(--size-header2);
+    font-weight: var(--weight-header2);
+}
+
+h3 {
+    font-size: var(--size-header3);
+    font-weight: var(--weight-header3);
+}
+
+button {
+    font-size: var(--size-botao);
+    font-weight: var(--weight-botao);
+}
+
+input::placeholder {
+    font-size: var(--size-placeholder);
+    font-weight: var(--weight-placeholder);
+}
+
+.searchbar input::placeholder {
+    font-size: var(--size-placeholder-mobile);
+    font-weight: var(--weight-placeholder-mobile);
+}
+
+.informacao-extra {
+    font-size: var(--size-informacao-extra);
+    font-weight: var(--weight-informacao-extra);
+}
+
+.descricao {
+    font-size: var(--size-descricao);
+    font-weight: var(--weight-descricao);
+}
+
+// Forms
+.formGeral {
+    padding: 16px 1rem;
+    justify-content: center; 
+    align-items: center; 
+    display: flex; 
+    flex-direction: column;
+    width: 100%;
+}
+
+.inputGroup {
+    width: 100%; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    gap: 7px;
+}
+
+.inputGroup label {
+    padding-left: 9px;
+    font-size: 20px; 
+    font-weight: 700; 
+    color: var(--azul-primario); 
+    text-align: left; 
+    width: 75%;
+    max-width: 800px;
+}
+
+.inputGroup input {
+    align-items: center; 
+    justify-content: center; 
+    padding: 17px;
+    border: 1px solid var(--cinza3);
+    border-radius: 25px;
+    margin-bottom: 10px; 
+    width: 75%;
+    max-width: 800px;
+    height: 60px; 
+    color: var(--cinza4); 
+    font-style: italic; 
+    background-color: var(--cinza1);
+}
+
+@media (max-width: 768px) {
+    p {
+        font-size: var(--size-paragrafo-mobile);
+        font-weight: var(--weight-paragrafo-mobile);
+    }
+
+    h1 {
+        font-size: var(--size-header1-mobile);
+        font-weight: var(--weight-header1-mobile);
+    }
+
+    h2 {
+        font-size: var(--size-header2-mobile);
+        font-weight: var(--weight-header2-mobile);
+    }
+
+    h3 {
+        font-size: var(--size-header3-mobile);
+        font-weight: var(--weight-header3-mobile);
+    }
+
+    button {
+        font-size: var(--size-botao-mobile);
+        font-weight: var(--weight-botao-mobile);
+    }
+
+    input::placeholder {
+        font-size: var(--size-placeholder-mobile);
+        font-weight: var(--weight-placeholder-mobile);
+    }
+
+    .informacao-extra {
+        font-size: var(--size-informacao-extra-mobile);
+        font-weight: var(--weight-informacao-extra-mobile);
+    }
+
+    .descricao {
+        font-size: var(--size-descricao-mobile);
+        font-weight: var(--weight-descricao-mobile);
+    }
+}

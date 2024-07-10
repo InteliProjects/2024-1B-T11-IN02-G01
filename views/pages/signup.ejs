@@ -1,0 +1,68 @@
+<script>
+  // Verificar se o usuário já está logado
+  document.addEventListener("DOMContentLoaded", function () {
+    const userID = getCookie('userID');
+    if (userID) {
+      // Redireciona o usuário para a página principal se já estiver logado
+      window.location.href = "/";
+    }
+  });
+</script>
+
+<body class="bodySignup">
+
+  <div class="logoLogin">
+    <!-- Exibe uma imagem do logo -->
+    <img src="logo/LOGO-OPORTONIZA.png" alt="logo do oportuniza"> 
+  </div>
+
+  <form class="formGeral">
+    
+    <div class="inputGroup">
+      <!-- Rótulo para o campo de nome -->
+      <label for="nomeLogin">Nome:</label> 
+      <!-- Campo de nome -->
+      <input id="nome" required="required" type="text" placeholder="oportuniza" /> 
+    </div>
+
+    <div class="inputGroup">
+      <!-- Rótulo para o campo de email -->
+      <label for="emailLogin">Email:</label> 
+      <!-- Campo de email -->
+      <input id="email" required="required" type="email" placeholder="oportuniza@gmail.com" /> 
+    </div>
+
+    <div class="inputGroup">
+      <!-- Rótulo para o campo de senha -->
+      <label for="senhaLogin">Senha:</label>
+      <!-- Campo de senha -->
+      <input id="senha" required="required" type="password" placeholder="********" />
+    </div>
+
+    <div class="inputGroup">
+      <!-- Rótulo para o campo de confirmar senha -->
+      <label for="confirmarSenhaLogin">Confirmar Senha:</label> 
+      <!-- Campo de confirmar senha -->
+      <input id="confirmarSenhaLogin" required="required" type="password" placeholder="********" /> 
+    </div>
+
+  </form>
+
+  <p id="errorBox"></p> <!-- Parágrafo vazio para exibir mensagens de erro -->
+
+  <div class="botaoLogin">
+    <!-- Botão "Entrar" que chama a função "entrar()" quando clicado -->
+    <button onclick="entrar()">Cadastrar</button> 
+  </div>
+
+  <div class="criarConta">
+    <p>Já possui uma conta?
+      <!-- Link para a página de login -->
+      <a href="/login">Entrar</a>
+    </p>
+    <br>
+    <p id="result"></p>
+  </div>
+  <script src="./assets/js/createAccount.js"></script>
+  <script src="./assets/js/getCookie.js"></script>
+</body>

@@ -1,0 +1,77 @@
+<script>
+  // Verificar se o usuário já está logado
+  document.addEventListener("DOMContentLoaded", function () {
+    const userID = getCookie('userID');
+    if (userID) {
+      // Redireciona o usuário para a página principal se já estiver logado
+      window.location.href = "/";
+    }
+  });
+</script>
+
+<body class="bodyLogin">
+
+  <div class="logoLogin">
+    <!-- Exibe uma imagem do logo -->
+    <img src="logo/LOGO-OPORTONIZA.png" alt="logo do oportuniza">
+  </div>
+
+  <form class="formLogin">
+
+    <div class="inputGroup">
+      <!-- Rótulo para o campo de email -->
+      <label for="emailLogin">Email:</label>
+      <!-- Campo de email -->
+      <input id="emailLogin" required="required" type="email" placeholder="oportuniza@gmail.com" />
+    </div>
+
+    <div class="inputGroup">
+      <!-- Rótulo para o campo de senha -->
+      <label for="senhaLogin">Senha:</label>
+      <!-- Campo de senha -->
+      <input id="senhaLogin" required="required" type="password" placeholder="********" />
+    </div>
+
+  </form>
+
+  <p id="errorBox"></p> <!-- Parágrafo vazio para exibir mensagens de erro -->
+
+  <div class="botaoLogin">
+    <!-- Botão "Entrar" que chama a função "entrar()" quando clicado -->
+    <button onclick="entrar()">Entrar</button>
+  </div>
+
+  <div class="criarConta">
+    <p>Não possui uma conta?
+      <!-- Link para a página de cadastro -->
+      <a href="/signup">Criar conta</a>
+    </p>
+  </div>
+
+  <script>
+    function entrar() {
+      fetch('/login', { // Faz uma requisição POST para a rota "/login"
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ // Envia os dados de email e senha
+          email: document.getElementById('emailLogin').value,
+          senha: document.getElementById('senhaLogin').value
+        })
+      }).then(response => {
+        if (!response.ok) {
+          return response.text().then(text => { throw new Error(text) }) // Lança um erro com a mensagem da resposta
+        }
+        if (response.status === 201) {
+          window.location.href = '/' // Redireciona para a página inicial
+        }
+        return response.json() // Retorna os dados da resposta como JSON 
+      }).then(data => {
+        console.log(data)
+      }).catch(error => {
+        console.error(error)
+        document.getElementById('errorBox').innerText = error.message; // Exibe a mensagem de erro no elemento com o ID "errorBox" 
+      })
+    }
+  </script>

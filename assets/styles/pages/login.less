@@ -1,0 +1,62 @@
+/* estiliza o body da página de login */
+.bodyLogin {
+    background-image: url("../../images/textura.png"); /* Define a textura como imagem de fundo */
+    background-size: contain;
+    height: 100vh; 
+    width: 100%; 
+    margin: 0; 
+    font-family: 'Montserrat', sans-serif; 
+    overflow-x: hidden; /* Esconde a barra de rolagem horizontal */
+    overflow-y: auto; /* Mostra a barra de rolagem vertical quando necessário */
+    background-position: center;
+    justify-content: center;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;/* Centraliza verticalmente o conteúdo */
+}
+
+/*estiliza a div que contém a logo da página de login */
+.logoLogin {
+    height: auto;
+    display: flex; 
+    justify-content: center;
+}
+
+/*estiliza a imagem da logo da página de login */
+.logoLogin img{
+    width: 50%;
+    max-width: 500px; /* Define a largura máxima da imagem */
+    height: auto; /* Define a altura da imagem automaticamente */
+}
+
+/*estiliza a frase de não possui conta */
+.criarConta {
+    margin-top: 10px; 
+    text-align: center; 
+    align-items: center; 
+    font-size: 12px; 
+}
+
+/*estiliza o link para criar conta */
+.criarConta a {
+    color: var(--laranja-primario); 
+    text-decoration: none; /* Remove a decoração do texto */
+}
+
+/*estiliza a div do botão de login */
+.botaoLogin{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+/*estiliza o botão de login */
+.botaoLogin button{
+    background-color: var(--laranja-primario); 
+    color: var(--branco); 
+    width: 156px; 
+    height: 62px; 
+    border-radius: 20px; 
+    border: none; /* Remove a borda do botão */
+    font-style: italic; 
+}

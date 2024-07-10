@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Registro</title>
+</head>
+
+<body>
+  <h1>Registrar usuário</h1>
+
+  <input type="text" id="nome" placeholder="Nome">
+  <input type="text" id="sobrenome" placeholder="Sobrenome">
+
+  <input type="email" id="email" placeholder="Email">
+
+  <input type="password" id="senha" placeholder="Password">
+
+
+  <button id="submit">Enviar</button>
+  <button id="verificarCustomizacao">Verificar personalização</button>
+
+  <br><br>
+
+  <input id="searchUserInput" placeholder="Nome a procurar">
+  <button onclick="buscar()">Procurar</button>
+
+  <p id="result"></p>
+  <script src="/js/createAccount.js"></script>
+  <script src="/js/getCookie.js"></script>
+  <script src="/js/getCustomization.js"></script>
+
+  <br><br><br>
+  <img src="" id="Imagem">
+  <script>
+    fetch('/oportunidade/35', {
+      method:'GET', 
+
+    }).then(response => {
+      if(!response.ok){
+        return response.text().then(text => {throw new Error(text)})
+      }
+      return response.json()
+    }).then(data =>{
+      console.log(data)
+      document.getElementById('Imagem').src = data.anexos
+    }).catch(error => {
+      console.error(error)
+    })
+    function buscar() {
+      fetch('/searchUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          nome: document.getElementById('searchUserInput').value
+        })
+      }).then(response => {
+        if (!response.ok) {
+          return response.text().then(text => { throw new Error(text) })
+        }
+        return response.json()
+      }).then(data => {
+        console.log(data)
+      }).catch(error => {
+        console.error(error)
+        document.getElementById('errorBox').innerText = error.message;
+      })
+    }
+
+
+      const completeURL = window.location.href
+      const searchResult = completeURL.split('?search=')[1]
+      console.log(searchResult);
+      fetch("/searchResults", {
+        method:'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          nome: searchResult
+        })
+      })
+      .then(response => {
+        if(!response.ok) {
+          return response.text().then(text => { throw new Error(text) })
+        }
+        return response.json()
+      }).then(data =>{
+        console.log(data)
+      }).catch(error => {
+        console.error(error)
+        document.getElementById('errorBox').innerText = error.message;
+           });
+
+    /* 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nome: document.getElementById('searchUserInput').value
+                })
+            }).then(response => {
+                if(!response.ok) {
+                    return response.text().then(text => { throw new Error(text) })
+                }
+            }).then(data => console.log(data))
+            .catch(error => console.error(error));
+    
+    
+             */
+  </script>
+</body>
+
+</html>

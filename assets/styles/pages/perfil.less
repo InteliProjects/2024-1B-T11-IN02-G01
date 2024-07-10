@@ -1,0 +1,464 @@
+#box {
+  width: 80%;
+  height: 2400px;
+  margin: 32px auto;
+  background: var(--cinza1);
+  padding: 16px;
+  border-radius: 25px;
+}
+
+.titulo {
+  text-align: center;
+  margin-bottom: 36px;
+  margin-bottom: 32px;
+  color: var(--azul-primario);
+}
+
+.recursos-perfil {
+  margin: auto;
+  text-align: center;
+}
+
+.inputText {
+  align-items: center;
+  justify-content: center;
+  padding: 17px;
+  border: 1px solid var(--cinza3); /* Define a borda do elemento */
+  border-radius: 25px; /* Define o raio do canto da borda */
+  margin: auto;
+  margin-bottom: 16px;
+  width: 90%; /* Define a largura do elemento */ /* Define a largura máxima do elemento */
+  height: 60px;
+  color: var(--preto);
+}
+
+.inputText::placeholder {
+  color: var(--cinza5);
+  font-style: italic;
+}
+
+.legenda {
+  padding-left: 9px; /* da uma margem a esquerda do input */
+  color: var(--azul-primario);
+  text-align: left; /* Alinha o texto à esquerda */
+  width: 100%; /* Define a largura do elemento, para que seja igual a do input */
+  max-width: 800px; /* Define a largura máxima do elemento, para que seja igual a do input */
+  margin-bottom: 4px;
+  font-size: var(--size-paragrafo);
+  font-weight: var(--weight-paragrafo);
+}
+
+form#formOportunidade .legenda {
+  width: 100%;
+}
+
+.subtitulo {
+  padding-left: 9px; /* da uma margem a esquerda do input */
+  color: var(--azul-primario);
+  text-align: left; /* Alinha o texto à esquerda */
+  width: 75%; /* Define a largura do elemento, para que seja igual a do input */
+  max-width: 800px; /* Define a largura máxima do elemento, para que seja igual a do input */
+  margin-bottom: 8px;
+}
+
+#descricao, #descricaoOSC {
+  align-items: center;
+  justify-content: center;
+  padding: 17px;
+  border: 1px solid var(--cinza3); /* Define a borda do elemento */
+  border-radius: 25px; /* Define o raio do canto da borda */
+  margin: auto;
+  margin-bottom: 16px;
+  width: 100%; /* Define a largura do elemento */ /* Define a largura máxima do elemento */
+  height: 227px;
+  color: var(--preto);
+  resize: none;
+}
+
+#descricao::placeholder, #descricaoOSC::placeholder {
+  color: var(--cinza5);
+  font-style: italic;
+}
+
+.publicar {
+  color: var(--azul-primario);
+  width: 90%;
+  justify-content: center;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.opcoesPublicacao {
+  display: flex;
+  margin: auto;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 200px;
+  justify-content: center;
+}
+
+.opcoesPublicacao label {
+  padding-left: 9px; /* da uma margem a esquerda do input */
+  // font-size: 19px; 
+  // font-weight: 400; 
+  color: var(--azul-primario); 
+  text-align: left; /* Alinha o texto à esquerda */
+  width: 75%; /* Define a largura do elemento, para que seja igual a do input */
+  max-width: 800px; /* Define a largura máxima do elemento, para que seja igual a do input */
+  margin-bottom: 4px;
+}
+
+.carousel {
+  margin-bottom: 40px;
+  justify-content: center;
+  text-align:center;
+}
+
+.carousel div img {
+  width: 80%;
+  max-width: 278px;
+  height: 351px;
+}
+
+/*estiliza o botão de login */
+#enviar {
+  background-color: var(--azul-primario); 
+  color: var(--branco); 
+  width: 100%;
+  height: 62px; 
+  border-radius: 20px; 
+  border: none; /* Remove a borda do botão */
+  // font-size: 21px; 
+  // font-weight: 500; 
+  // font-style: italic; 
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--branco);
+  padding: 30px;
+  z-index: 1000;
+  display: none;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: justify;
+}
+
+.popup__imagem {
+  text-align: right;
+  position: relative;
+  max-width: 278px;
+}
+
+.imagem-principal {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.inputText {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+textarea.inputText {
+  resize: vertical;
+  height: 227px;
+}
+
+.enviarButton {
+  background-color: var(--azul-primario); 
+  color: var(--branco); 
+  width: 100%; 
+  height: 62px; 
+  border-radius: 20px; 
+  border: none; /* Remove a borda do botão */
+  // font-weight: 500;
+  // font-size: 21px;
+  font-style: italic;
+  margin: auto;
+  margin-top: 16px;
+}
+
+/* Estilos CSS */
+.popup__imagem {
+  text-align: right;
+  position: relative;
+  width: 80%;
+  display: flex; /* Usar flexbox */
+  justify-content: center; /* Centralizar horizontalmente */
+  align-items: center; /* Centralizar verticalmente */
+  position: relative;
+  margin: auto;
+}
+
+.imagem-oportunidade {
+  width: 100%;
+  height: auto;
+  border-radius: 10%; 
+  display: block;
+  margin: 0 auto;
+}
+
+
+.imagem-container {
+  position: relative;
+  display: inline-block;
+}
+
+.imagem-principal {
+  max-width: 100%; /* Ajuste para a largura do campo de formulário */
+  height: auto;
+  border-radius: 10px; /* Ajuste para um formato mais arredondado */
+}
+
+.icone__editar {
+  position: absolute;
+  bottom: 60px; /* Ajuste conforme necessário */
+  right:350px; /* Ajuste conforme necessário */
+  margin-bottom: 4%;
+  margin-right: 12%;
+  background-color: var(--azul-primario); /* Cor de fundo do ícone */
+  border-radius: 50%; /* Faz com que o ícone seja circular */
+  width: 6vw; /* Ajuste conforme necessário para tamanho responsivo */
+  height: 14vw; /* Mantém a proporção do ícone */
+  align-items: center; /* Centraliza o ícone verticalmente */
+  justify-content: center; /* Centraliza o ícone horizontalmente */
+  display: flex; /* Permite o uso de flexbox para centralizar o ícone */
+  cursor: pointer; /* Muda o cursor para indicar que é interativo */
+  border: none; /* Remove a borda padrão do botão */
+  outline: none; /* Remove o contorno padrão do botão */
+  padding: 0; /* Remove o padding padrão do botão */
+}
+.imagem-oportunidade{
+  border-radius: 25px;
+  /* Bordas arredondadas */
+  position: relative;
+  /* Define o posicionamento relativo */
+  width: 350px;
+  /* Define a largura de 350 pixels */
+  margin: 10px;
+  /* Adiciona margem externa de 10 pixels */
+}
+.imagem__editar {
+  position: absolute;
+  bottom: 0; /* Ajuste conforme necessário */
+  right:10px; /* Ajuste conforme necessário */
+  margin-bottom: 4%;
+  margin-right: 9%;
+  background-color: var(--azul-primario); /* Cor de fundo do ícone */
+  border-radius: 50%; /* Faz com que o ícone seja circular */
+  width: 14vw; 
+  max-width: 20%;
+  max-height: 18%;/* Ajuste conforme necessário para tamanho responsivo */
+  height: 14vw; /* Mantém a proporção do ícone */
+  align-items: center; /* Centraliza o ícone verticalmente */
+  justify-content: center; /* Centraliza o ícone horizontalmente */
+  display: flex; /* Permite o uso de flexbox para centralizar o ícone */
+  cursor: pointer; /* Muda o cursor para indicar que é interativo */
+  border: none; /* Remove a borda padrão do botão */
+  outline: none; /* Remove o contorno padrão do botão */
+  padding: 0; /* Remove o padding padrão do botão */
+}
+
+.imagem__editar img {
+  width: 6vw; 
+  max-width: 20%;/* Ajuste conforme necessário para tamanho responsivo */
+  /* Mantém a proporção do ícone */
+}
+
+
+.perfil__imagem {
+  text-align: center;
+  max-width: 278px;
+  margin: auto;
+}
+
+.mascote {
+  position: relative;
+  display: inline-block;
+  
+}
+
+#oppo{
+  background-color: var(--cinza2); /* Cor de fundo circular cinza escuro */
+  border-radius: 50%; /* Formato circular */
+  padding: 0; /* Remover o preenchimento para um formato circular perfeito */
+  max-height: 100px;
+  max-width: 100px;
+  border:none;
+ 
+}
+#oppo img{
+  max-height: 120px;
+  max-width: 100px;
+}
+
+.icone-editar-mascote {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+}
+
+.inputOportunidade .uploadButton{
+    align-items: center; 
+    justify-content: center; 
+    padding: 17px;
+    border: 1px solid var(--cinza3); /* Define a borda do elemento */
+    border-radius: 25px; /* Define o raio do canto da borda */
+    margin-bottom: 10px; 
+    width: 90%; /* Define a largura do elemento */
+    max-width: 800px; /* Define a largura máxima do elemento */
+    height: 60px; 
+    background-color: var(--branco);
+    color: var(--cinza5); 
+    // font-size: 17px; 
+    font-style: italic;
+    // font-weight: 400;
+    background-image: url("../../images/icone_upload.svg");
+    background-repeat: no-repeat;
+    background-position: 95% center;
+}
+
+@media (max-width: 768px) {
+
+  #box {
+    height: 2560px;
+  }
+
+  .titulo {
+    // font-size: 20px;
+    margin-bottom: 10px; 
+  }
+
+
+  .imagem__editar {
+    position: absolute;
+    right: -5px;
+    bottom: 30px;
+    width: 25vw;
+    height: 25vw;
+    
+  }
+  
+  .carousel {
+    margin: auto;
+    margin-bottom: 40px;
+    justify-content: center;
+    text-align:center;
+  }
+
+  #oppo {
+    position: absolute;
+    left: 20px;
+    top: -90px;
+  }
+
+  .editar-oppo-icone {
+    position: absolute;
+    left: 95px;
+    top: -30px;
+  }
+
+  .icone__editar {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 20px;
+    bottom: 230px;
+    
+  }
+  .imagem__editar img, .icone__editar img {
+    width: 5vw;
+    
+  }
+
+  .legenda {
+    font-size: var(--size-paragrafo-mobile);
+    font-weight: var(--weight-paragrafo-mobile);
+  }
+  
+}
+
+@media (min-width: 1024px) {
+  .icone__editar {
+    max-width: 3.5%;
+    max-height: 8%;
+  }
+
+  #oppo {
+    position: absolute;
+    left: 330px;
+    top: -90px;
+  }
+
+  .editar-oppo-icone {
+    position: absolute;
+    left: 410px;
+    top: -30px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .formOportunidade div input {
+    width: 100%;
+  }
+
+  .imagem__editar {
+    position: absolute;
+    right: -5px;
+    bottom: 10px;
+    width: 25vw;
+    height: 25vw;
+    
+  }
+
+  .icone__editar {
+    background-color: var(--azul-primario);
+    border: none;
+    border-radius: 50%;
+    width: 20%;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    }
+
+  .input-file {
+    display: none;
+  }
+  
+  .enviarButton {
+    background-color: var(--azul-primario); 
+    color: var(--branco); 
+    width: 50%; 
+    height: 62px; 
+    border-radius: 20px; 
+    border: none; /* Remove a borda do botão */
+    // font-weight: 500;
+    // font-size: 21px;
+    font-style: italic;
+    margin-left: 25%;
+    margin-top: 16px;
+  }
+}

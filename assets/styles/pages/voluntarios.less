@@ -1,0 +1,247 @@
+/* Importa a folha de estilo do Swiper (um plugin de carrossel) da CDN */
+@import url("https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css");
+
+.card-voluntario {
+    height: auto;
+    /* Altura automática baseada no conteúdo */
+}
+
+/* Estilo comentado que pode ser utilizado para descrição do voluntário */
+// #descricaoVoluntario{
+//     overflow: hidden; /* Esconde o conteúdo que ultrapassa o tamanho da caixa */
+//     text-overflow: ellipsis; /* Adiciona reticências ao texto que ultrapassa a largura */
+// }
+
+
+/* Estilo para os cards padrão de OSC (Organizações da Sociedade Civil) */
+.card-vol-osc-padrao,
+.card-vol-osc-padrao::before {
+    width: 90%;
+    /* Define a largura de 90% */
+}
+
+/* Estilo para os botões de navegação do Swiper quando usados para voluntários */
+.swiper-button-prev-voluntarios,
+.swiper-button-next-voluntarios {
+    display: none;
+    /* Oculta os botões de navegação */
+}
+
+/* Estilo ajustado para o card de destaque */
+.card-vol-osc-destaque {
+    background-color: var(--amarelo-primario);
+    /* Define a cor de fundo azul */
+    border-radius: 25px;
+    /* Bordas arredondadas */
+    position: relative;
+    /* Define o posicionamento relativo */
+    width: 350px;
+    /* Define a largura de 350 pixels */
+    margin: 10px;
+    /* Adiciona margem externa de 10 pixels */
+}
+
+// /* Ajuste no padding do conteúdo do card de destaque para não sobrepor a aba */
+.card-vol-osc-destaque-content {
+    padding: 20px;
+    /* Adiciona preenchimento de 20 pixels em torno do conteúdo */
+    padding-bottom: 60px;
+    /* Adiciona preenchimento inferior de 60 pixels */
+}
+
+
+
+/* Margem inferior na descrição do voluntário */
+#descricaoVoluntario {
+    margin-bottom: 5%;
+    /* Adiciona margem inferior de 20 pixels */
+}
+
+/* Estilo ajustado para o card de destaque repetido */
+.card-vol-osc-destaque {
+    background-color: var(--azul-primario);
+    /* Define a cor de fundo azul */
+    border-radius: 25px;
+    /* Bordas arredondadas */
+    position: relative;
+    /* Define o posicionamento relativo */
+    width: 350px;
+    /* Define a largura de 350 pixels */
+    margin: 10px;
+    /* Adiciona margem externa de 10 pixels */
+    height: auto;
+}
+
+
+/* Margem inferior na descrição do voluntário */
+#descricaoVoluntario {
+    margin-bottom: 20px;
+    /* Adiciona margem inferior de 20 pixels */
+}
+
+
+/* Ajuste da altura do card */
+.card-vol-osc-destaque {
+    height: auto;
+    /* Altura automática baseada no conteúdo */
+}
+
+/* Estilo para o título e texto no card de destaque */
+.card-vol-osc-destaque h2,
+.card-vol-osc-destaque p {
+    color: var(--branco);
+    /* Cor do texto branca */
+}
+
+/* Estilo para o título e texto na aba de usuário destaque */
+.aba-usuario-destaque h2,
+.aba-usuario-destaque p {
+    color: var(--amarelo-primarioa);
+}
+.popupJanela, .popupContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40%; /* Ajustado para 100% da viewport */
+    height: 40%; /* Ajustado para 100% da viewport */
+    justify-content: center;
+    align-items: center;
+}
+
+.popupJanela {
+    background-color: rgba(0, 0, 0, 0.5); /* fundo escuro semi-transparente */
+}
+
+.popupContainer {
+
+    display: flex;
+    flex-direction: column; /* Alinha os filhos verticalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    background-color: #D9D9D9;
+    padding: 20px;
+    border-radius: 10px;
+    height: auto;
+    text-align: center;
+    z-index: 1001;
+    overflow-y: auto; /* Adiciona rolagem vertical se o conteúdo for maior que o container */
+    position: relative;
+}
+
+// .popupContainer img {
+//     justify-content: center;
+//     align-items: center;
+//     display: flex;
+//     max-width: 500px;
+//     width: 95%;
+//     height: auto;
+//     border-radius: 10px;
+//     margin: auto;
+// }
+
+#imagemVoluntario {
+    display: block; /* Altera de flex para block */
+    width: 90%;
+    height: auto;
+    border-radius: 10px;
+    margin: 5% auto; /* Centraliza horizontalmente e adiciona margem inferior */
+}
+
+.popupJanela {
+    z-index: 1000;
+}
+
+#botaoFechar {
+
+    display: block; /* Altera de float para block */
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 0 auto; /* Centraliza horizontalmente */
+    border: none;
+    background-color: #FD924E; /* Laranja */
+    border-radius: 10px;
+    width: 90%;
+    padding: 8px;
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
+// .header2 {
+//     font-family: 'Montserrat', sans-serif;
+//     font-weight: 600; 
+//     font-size: 24px;
+// }
+
+
+.nomeVoluntario {
+    margin: 5%;
+}
+
+.paragrafo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    font-size: 19px;
+}
+
+
+// .popup-voluntario-tags {
+//     display: flex;
+//     /* Usa flexbox para layout interno */
+//     justify-content: space-around;
+//     /* Distribui os itens com espaço ao redor */
+//     align-items: center;
+//     /* Alinha os itens no centro verticalmente */
+//     margin: 10px 0;
+//     /* Margem vertical */
+//     flex-direction: row;
+//     /* Alinha os itens em linha */
+//     align-items: flex-start; /* Centraliza horizontalmente */
+// }
+
+.popup-voluntario-tags {
+    display: flex;
+    justify-content: flex-start; /* Alinha os itens no início do eixo principal */
+    align-items: flex-start; /* Alinha os itens no início do eixo transversal */
+    margin: 5%;
+    flex-direction: row; /* Alinha os itens em linha */
+    flex-wrap: wrap; /* Permite que as tags quebrem linha se necessário */
+    width: 100%; /* Garante que o container ocupe toda a largura */
+}
+
+
+/* Estiliza os parágrafos dentro das tags do popup */
+.popup-voluntario-tags p {
+    background-color: #FD924E;
+    padding: 0 0.7% 0;
+    color: white;
+    border-radius: 5px;
+    margin: 1%; /* Adiciona margem entre as tags */
+}
+
+.card-padding{
+    padding: 0;
+}
+
+.card-padding #nomeVoluntario{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.card-padding #descricaoVoluntario{
+    margin-left: 20px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .popup {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .popup {
+        width: 90%;
+        padding: 15px;
+    }
+}

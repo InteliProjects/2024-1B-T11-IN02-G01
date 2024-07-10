@@ -1,0 +1,88 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/oppo.css">
+</head>
+<script>
+    // Verificar se o usuário já está logado
+    document.addEventListener("DOMContentLoaded", function () {
+        const userID = getCookie('userID');
+        if (!userID) {
+            // Redireciona o usuário para a página principal se já estiver logado
+            window.location.href = "/";
+        }
+    });
+</script>
+
+<body>
+    <section>
+        <div class="backgroundOppo">
+            <div>
+                <img class="oppo" src='images/oppo.png' alt="Imagem">
+            </div>
+        </div>
+
+        <div class="bodyPart">
+            <div class="bodyPartElement">
+                <button id="face"><img src="images/Rosto.png"></button>
+            </div>
+            <div class="bodyPartElement">
+                <button id="head"><img src="images/Corpo.png"></button>
+            </div>
+            <div class="bodyPartElement">
+                <button id="body"><img src="images/Braço.png"></button>
+            </div>
+        </div>
+
+    </section>
+
+    <section>
+        <div class="optionsSection">
+            <p class="d-flex justify-content-end paragrafo">ROSTO</p>
+            <div class="container selection">
+                <div class="row">
+                    <div class="col-xs-3 optionBox"><button class="option"><img src="images/oculos1.png"
+                                alt="Option 9"></button></div>
+                    <div class="col-xs-3 optionBox"><button class="option"><img src="images/oculos2.png"
+                                alt="Option 9"></button></div>
+                    <div class="col-xs-3 optionBox"><button class="option"><img src="images/skinLocked.png"
+                                alt="Option 9"></button></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 optionBox"><button class="option"><img src="images/oculos3.png"
+                                alt="Option 9"></button></div>
+                    <div class="col-xs-3 optionBox"><button class="option"><img src="images/oculos4.png"
+                                alt="Option 9"></button></div>
+                    <div class="col-xs-3 optionBox"><button class="option"><img src="images/skinLocked.png"
+                                alt="Option 9"></button></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 optionBox"><button class="option"><img src="images/cilios.png"
+                                alt="Option 9"></button></div>
+                    <div class="col-xs-3 optionBox"><button class="option"><img src="images/skinLocked.png"
+                                alt="Option 9"></button></div>
+                    <div class="col-xs-3 optionBox"><button class="option"><img src="images/skinLocked.png"
+                                alt="Option 9"></button></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 optionBox"><button class="option"><img src="images/batom.png"
+                                alt="Option 9"></button></div>
+                    <div class="col-xs-3 optionBox"><button class="option"><img src="images/skinLocked.png"
+                                alt="Option 9"></button></div>
+                    <div class="col-xs-3 optionBox"><button class="option"><img src="images/skinLocked.png"
+                                alt="Option 9"></button></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="botaoSalvar">
+            <a href="/perfil"><button class="botao">Salvar</button></a>
+        </div>
+
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>

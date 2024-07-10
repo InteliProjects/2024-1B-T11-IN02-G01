@@ -1,0 +1,241 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSCS</title>
+</head>
+
+<body class="body_voluntarios">
+
+    <div class="container mt-5">
+        <!-- Barra de busca -->
+        <div class="search-bar">
+            <!-- Campo de entrada de texto com um placeholder -->
+            <input type="text" placeholder="Que tipo de voluntariado você procura" id="searchInput">
+            <!-- Ícone de pesquisa ao lado do campo de texto -->
+            <img src="images/icone-pesquisa.png" alt="Search Icon">
+        </div>
+    </div>
+
+
+    <section class="carrossel">
+        <h2 class="carrossel__titulo header2">OSCs Destaques</h2>
+        <!-- container principal do slider -->
+        <div class="swiper">
+            <!-- paginação, as bolinhas que ficam em cima -->
+            <div class="swiper-pagination"></div>
+            <!-- Additional required wrapper -->
+            <div id="oscsHighlighted" class="swiper-wrapper">
+                <!-- Slides -->
+
+        </div>
+    </section>
+
+    <section class="carrossel">
+        <h2 class="carrossel__titulo header2">OSCs</h2>
+        <!-- container principal do slider -->
+        <div class="swiper">
+            <!-- paginação, as bolinhas que ficam em cima -->
+            <div class="swiper-pagination"></div>
+            <!-- Additional required wrapper -->
+            <div id="oscs" class="swiper-wrapper">
+                <!-- Slides -->
+        </div>
+    </section>
+
+    <section class="carrossel">
+        <h2 class="carrossel__titulo header2" class="header2">Novas OSCs</h2>
+        <!-- container principal do slider -->
+        <div class="swiper">
+            <!-- paginação, as bolinhas que ficam em cima -->
+            <div class="swiper-pagination"></div>
+            <!-- Additional required wrapper -->
+            <div id="oscsNew" class="swiper-wrapper">
+                <!-- Slides -->
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const oscsHighlighted = document.getElementById("oscsHighlighted");
+            fetch("/organizations", {
+                method: 'GET',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            })
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error("Erro ao listar as organizaçãoes em destaque");
+                }
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data);
+                data.forEach((register,index) => {
+                    const nome = register.nome;
+                    const site = register.site;
+                    const objetivo = register.objetivo;
+                    const imagem = register.imagem;
+
+                    const slideHTML = `
+                        <div class="swiper-slide card-destaque-regular card-voluntario">
+                            <div class="card-oportunidade card-vol-osc-destaque">
+                                <div class="card-destaque-regular-photo card-vol-osc-destaque-photo">
+                                    <img src="${imagem}" alt="Foto do voluntário">
+                                </div>
+                                <div class="card-destaque-regular-content card-vol-osc-destaque-content card-padding">
+                                    <h2 id="nomeVoluntario" class="header2">${nome}</h2>
+                                    <p id="descricaoVoluntario" class="paragrafo">${objetivo}</p>
+                                    <div class="aba-usuario-destaque">
+                                        <h2 class="header2">OSC Destaque</h2>
+                                        <p class="paragrafo">Tem realizado ações relevantes para a comunidade</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+
+                    if (index === 0) {
+                        oscsHighlighted.innerHTML = slideHTML;
+                    } else {
+                        oscsHighlighted.innerHTML += slideHTML;
+                    }
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+            const oscsNew = document.getElementById("oscsNew");
+            fetch("/new-organizations", {
+                method: 'GET',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            })
+            .then((res) => {
+                if (!res.ok) {
+                    console.log(res)
+                    throw new Error("Erro ao listar as novas organizaçãoes");
+                }
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data);
+                data.forEach((register,index) => {
+                    const nome = register.nome;
+                    const site = register.site;
+                    const objetivo = register.objetivo;
+                    const imagem = register.imagem;
+
+                    const slideHTML = `
+                    <div class="swiper-slide card-destaque-regular card-voluntario">
+                        <div class="card-oportunidade card-vol-osc-padrao">
+                            <div class="card-destaque-regular-photo card-vol-osc-padrao-photo">
+                                <img src="${imagem}" alt="Foto da Vaga">
+                            </div>
+                            <div class="card-destaque-regular-content card-vol-osc-padrao-content">
+                                <h2 id="nomeVoluntario" class="header2">${nome}</h2>
+                                <p id="descricaoVoluntario" class="paragrafo">${objetivo}</p>
+                            </div>
+                        </div>
+                    </div>`;
+
+                    if (index === 0) {
+                        oscsNew.innerHTML = slideHTML;
+                    } else {
+                        oscsNew.innerHTML += slideHTML;
+                    }
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+            const oscs = document.getElementById("oscs");
+            fetch("/organizations", {
+                method: 'GET',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            })
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error("Erro ao listar as organizaçãoes");
+                }
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data);
+                data.forEach((register,index) => {
+                    const nome = register.nome;
+                    const site = register.site;
+                    const objetivo = register.objetivo;
+                    const imagem = register.imagem;
+
+                    const slideHTML = `
+                    <div class="swiper-slide card-destaque-regular card-voluntario">
+                        <div class="card-oportunidade card-vol-osc-padrao">
+                            <div class="card-destaque-regular-photo card-vol-osc-padrao-photo">
+                                <img src="${imagem}" alt="Foto da Vaga">
+                            </div>
+                            <div class="card-destaque-regular-content card-vol-osc-padrao-content">
+                                <h2 id="nomeVoluntario" class="header2">${nome}</h2>
+                                <p id="descricaoVoluntario" class="paragrafo">${objetivo}</p>
+                            </div>
+                        </div>
+                    </div>`;
+
+                    if (index === 0) {
+                        oscs.innerHTML = slideHTML;
+                    } else {
+                        oscs.innerHTML += slideHTML;
+                    }
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+        });
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            spaceBetween: 0,
+            autoplay: {
+                delay: 3000,
+            },
+            loop: true,
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            // Responsive breakpoints
+            breakpoints: {
+                // when window width is >= 0px
+                0: {
+                    slidesPerView: 1.5,
+                },
+                // when window width is >= 768px
+                768: {
+                    slidesPerView: 4,
+                }
+            },
+            centeredSlides: true
+        });
+    </script>
+
+
+<script>
+    document.getElementById('searchInput').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        alert('Em construção');
+        event.target.value = '';  // Limpa o campo de entrada
+      }
+    });
+</script>
+
+</body>

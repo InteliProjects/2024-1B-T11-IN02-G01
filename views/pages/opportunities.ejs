@@ -1,0 +1,335 @@
+<div class="container mt-5">
+  <!-- Barra de busca -->
+  <div class="search-bar">
+    <!-- Campo de entrada de texto com um placeholder -->
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Que tipo de voluntariado você procura"
+    />
+    <!-- Ícone de pesquisa ao lado do campo de texto -->
+    <img src="images/icone-pesquisa.png" alt="Search Icon" />
+  </div>
+</div>
+
+<section class="carrossel">
+  <h2 class="carrossel__titulo">Vagas prestes a fecharem</h2>
+
+  <!-- container principal do slider -->
+  <div class="swiper">
+    <!-- paginação, as bolinhas que ficam em cima -->
+    <div class="swiper-pagination"></div>
+
+    <!-- Additional required wrapper -->
+    <div id="engagement" class="swiper-wrapper">
+      <!-- Slides -->
+    </div>
+
+    <!-- botões de navegação -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</section>
+
+<section class="carrossel">
+  <h2 class="carrossel__titulo">Diversas oportunidades</h2>
+
+  <!-- container principal do slider -->
+  <div class="swiper">
+    <!-- paginação, as bolinhas que ficam em cima -->
+    <div class="swiper-pagination"></div>
+
+    <!-- Additional required wrapper -->
+    <div id="opportunities" class="swiper-wrapper">
+      <!-- Slides -->
+    </div>
+    <!-- botões de navegação -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</section>
+<div id="popupOverlayOportunidade" class="popup-overlay"></div>
+<div id="popupOportunidade" class="popup popupoportunidade">
+  
+  <!-- <div class="popUp-card">
+    <div class="popUp-imagem">
+      <img src="images/pop-up1.png" alt="Foto da Vaga" />
+      <img src="images/pop-up2.png" alt="Foto da Vaga" />
+      <img src="images/pop-up3.png" alt="Foto da Vaga" />
+    </div>
+    <div class="popUp-conteudo">
+      <h2>Professor de Instrumento Musical</h2>
+      <div class="popUp-tags">
+        <p>Arte</p>
+        <p>Música</p>
+        <div class="popUp-avaliacao">
+          <img src="images/estrela.png" alt="Estrela" />
+          <p>5.0</p>
+        </div>
+      </div>
+      <p>Clube de Música do Nando em 20 de maio, 2024</p>
+      <p><span>Requisitos: </span></p>
+      <p>
+        Saber tocar algum instrumento musical; Estar apto a comparecer
+        presencialmente nos encontros, todo sábado às 17h na rua Almirante, 150,
+        São Paulo/SP.
+      </p>
+      <p><span>Contato:</span> nando.musiclub@gmail.com</p>
+      <p>Acesse o nosso site para saber mais.</p>
+      <p><span>ODS relacionados: </span>Educação de qualidade</p>
+      <p><span>Prazo de inscrição: </span>31/05/2024</p>
+      <div class="popUp-info">
+        <p>50 beneficiários</p>
+        <p>15 voluntários ativos</p>
+        <p>5 vagas</p>
+      </div>
+    </div>
+  </div> -->
+  <button id="closeButtonOportunidade">Quero me inscrever!</button>
+</div>
+
+<script src="./assets/js/getCookie"></script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("OFKDSF")
+  const engagement = document.getElementById("engagement");
+  fetch("/oportunidades-engajamento", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  .then((res) => {
+    if (!res.ok) {
+      throw new Error("Erro ao buscar oportunidades de engajamento");
+    }
+    return res.json();
+  })
+  .then((data) => {
+    data.forEach((register, index) => {
+      console.log("OPAAA")
+      const nome = register.nome;
+      const qtdVagas = register.qtd_vagas;
+      const user = register.id_usuarios.nome;
+      const imgDestaque = register.link_foto_destaque;
+      const id = register.id;
+
+      const slideHTML = `
+      <div class="swiper-slide card-oportunidade-destaque">
+        <div class="card-oportunidade" id="${id}">
+          <div class="card-oportunidade-destaque-photo">
+            <img src="${imgDestaque}" alt="Foto da Vaga">
+            <div class="vagas-badge">Vagas: ${qtdVagas}</div>
+          </div>
+          <div class="card-oportunidade-destaque-content">
+            <h2 class="vaga">${nome}</h2>
+            <p id="nomeRecrutador">${user}</p>
+          </div>
+        </div>
+      </div>`;
+
+      if (index === 0) {
+        engagement.innerHTML = slideHTML;
+      } else {
+        engagement.innerHTML += slideHTML;
+      }
+    });
+
+    // Adiciona os event listeners após os cards terem sido criados
+    addCardEventListeners();
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+
+  const opportunities = document.getElementById("opportunities");
+  fetch("/oportunidadesAll", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      data.forEach((register, index) => {
+        const nome = register.nome;
+        const descricao = register.descricao;
+        const qtdVagas = register.qtd_vagas;
+       // const user = register.id_usuarios.nome;
+        const img = register.link_foto_destaque;
+        const id = register.id;
+
+        console.log("Oparewrf")
+
+
+        const slideHTML = `
+      <div class="swiper-slide card-destaque-regular"> 
+        <div class="card-oportunidade" id="${id}">
+        <div class="gray-box">
+          <h2 class="vaga">${nome}</h2>
+        </div>
+        <div class="card-destaque-regular-photo">
+          <img src="${img}" alt="Foto da Vaga">
+          <div class="vagas-badge">Vagas: ${qtdVagas}</div>
+        </div>
+        <div class="card-destaque-regular-content">
+          <p>${descricao}</p>
+        </div>
+      </div>
+      </div>`;
+      console.log("Opallllll")
+
+        if (index === 0) {
+          opportunities.innerHTML = slideHTML;
+        } else {
+          opportunities.innerHTML += slideHTML;
+        }
+      });
+      console.log("Opa")
+      // Adiciona os event listeners após os cards terem sido criados
+      addCardEventListeners();
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
+  // Função para adicionar event listeners aos cards
+  function addCardEventListeners() {
+    const cards = document.querySelectorAll(".card-oportunidade");
+    cards.forEach((card) => {
+      card.addEventListener("click", (event) => {
+
+        const id = event.currentTarget.id;
+        console.log(id)
+        // Realizar a requisição fetch para obter os detalhes do card clicado
+        fetch(`/card-oportunidade/${id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error("Erro ao buscar detalhes da oportunidade");
+            }
+            return res.json();
+          })
+          .then((data) => {
+            const cardOportunidade = document.getElementById("popupOportunidade");
+            const nome = data.nome;
+            const areaInteresse = data.area_interesse;
+            const dataCriacao = data.data_criacao.split('T')[0];
+            const descricao = data.descricao;
+            const qtdVagas = data.qtd_vagas;
+            const dataFechamento = data.data_fechamento;
+            const qtdBeneficiarios = data.qtd_beneficiarios;
+            const ods = data.ods;
+            const qtdVoluntariosAtivas = data.qtd_voluntarios_ativos;
+            const link = data.link;
+            const idUsuariosNome = data.id_usuarios.nome;
+            const idUsuariosEmail = data.id_usuarios.email;
+            const img = data.anexos;
+
+            const slideHTML = `
+              <div class="popUp-card">
+                <div class="popUp-imagem">
+                  <img src="${img}" alt="Foto da Vaga" />
+                </div>
+                <div class="popUp-conteudo">
+                  <h2>${nome}</h2>
+                  <div class="popUp-tags">
+                    <p>${areaInteresse}</p>
+                    <div class="popUp-avaliacao">
+                      <img src="images/estrela.png" alt="Estrela" />
+                      <p>5.0</p>
+                    </div>
+                  </div>
+                  <p>${idUsuariosNome} em ${dataCriacao}</p>
+                  <p><span>Requisitos: </span></p>
+                  <p>${descricao}</p>
+                  <p><span>Contato:</span>${idUsuariosEmail}</p>
+                  <p>${link}</p>
+                  <p><span>ODS relacionados: </span>${ods}</p>
+                  <p><span>Prazo de inscrição: </span>${dataFechamento}</p>
+                  <div class="popUp-info">
+                    <p>${qtdBeneficiarios} beneficiários</p>
+                    <p>${qtdVoluntariosAtivas} voluntários ativos</p>
+                    <p>${qtdVagas} vagas</p>
+                  </div>
+                </div>
+              </div>
+              <button id="closeButtonOportunidade" data-id="${id}">Quero me inscrever!</button>`;
+
+            cardOportunidade.innerHTML = slideHTML;
+
+            // Exibir o popup
+            document.getElementById("popupOverlayOportunidade").style.display = "block";
+            cardOportunidade.style.display = "block";
+
+            // Adicionar event listener ao botão
+            document.getElementById("closeButtonOportunidade").addEventListener("click", (e) => {
+              const cardId = e.target.getAttribute("data-id");
+              console.log("ID do card:", cardId);
+
+              // Esconder o popup
+              document.getElementById("popupOverlayOportunidade").style.display = "none";
+              cardOportunidade.style.display = "none";
+            });
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      });
+    });
+  }
+
+  document.getElementById("popupOverlayOportunidade").addEventListener("click", () => {
+    document.getElementById("popupOverlayOportunidade").style.display = "none";
+    document.getElementById("popupOportunidade").style.display = "none";
+
+  });
+});
+</script>
+
+<script>
+
+  document.getElementById('searchInput').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      alert('Em construção');
+      event.target.value = '';  // Limpa o campo de entrada
+    }
+  });
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper(".swiper", {
+    spaceBetween: 0,
+    autoplay: {
+      delay: 3000,
+    },
+    loop: true,
+    // Navigation arrows
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    // Responsive breakpoints
+    breakpoints: {
+      // when window width is >= 0px
+      0: {
+        slidesPerView: 1,
+      },
+      // when window width is >= 768px
+      768: {
+        slidesPerView: 3,
+      },
+    },
+  });
+</script>

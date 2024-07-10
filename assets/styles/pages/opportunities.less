@@ -1,0 +1,384 @@
+/* Importa o CSS do Swiper (uma biblioteca de carrossel) de um CDN */
+@import url("https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css");
+
+/* Define a cor de fundo para elementos com a classe .bg-form */
+.bg-form {
+    background-color: var(--azul-primario);
+    /* Cor de fundo azul escuro */
+}
+
+/* Estiliza a barra de pesquisa */
+.search-bar {
+    width: 100%;
+    background-color: var(--azul-primario);
+    /* Cor de fundo azul escuro */
+    border-radius: 10px;
+    /* Bordas arredondadas */
+    padding: 5px 10px;
+    /* Espaçamento interno (padding) */
+    display: flex;
+    /* Usa flexbox para layout interno */
+    margin: 1% auto;
+}
+
+/* Estiliza o input dentro da barra de pesquisa */
+.search-bar input {
+    border: none;
+    /* Remove a borda padrão */
+    background-color: transparent;
+    /* Fundo transparente */
+    color: var(--branco);
+    /* Texto branco */
+    outline: none;
+    /* Remove a linha de foco padrão */
+    flex-grow: 5;
+    /* Permite que o input cresça dentro do flexbox */
+}
+
+/* Estiliza as imagens dentro da barra de pesquisa */
+.search-bar img {
+    width: 20px;
+    /* Largura das imagens */
+    height: 20px;
+    /* Altura das imagens */
+}
+
+/* Estiliza o título do carrossel */
+.carrossel__titulo {
+    margin: 22px;
+    /* Margem em torno do título */
+    color: var(--azul-primario);
+    /* Cor do texto */
+}
+
+/* Estiliza os botões de navegação do Swiper */
+.swiper-button-prev,
+.swiper-button-next {
+    color: var(--azul-primario);
+    /* Cor dos botões */
+}
+
+/* Estiliza o card de destaque */
+.card-oportunidade-destaque, .card-destaque-regular {
+    position: relative;
+    /* Posicionamento relativo para uso de elementos posicionados absolutamente dentro */
+    box-sizing: border-box;
+    /* Inclui padding e borda no tamanho total */
+    overflow: hidden;
+    /* Oculta o conteúdo que exceder o tamanho do contêiner */
+    display: flex;
+    /* Usa flexbox para layout interno */
+    justify-content: center;
+    /* Centraliza o conteúdo */
+    margin-bottom: 40px;
+    /* Coloca a margem entre o card e o rodapé */
+}
+
+/* Estiliza o card de oportunidade */
+.card-oportunidade {
+    border-radius: 25px;
+    /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra leve */
+    width: 75%;
+    /* Largura do card */
+}
+
+/* Adiciona um overlay antes do card de oportunidade */
+.card-oportunidade::before {
+    content: "";
+    /* Necessário para exibir o elemento pseudo */
+    position: absolute;
+    /* Posicionamento absoluto para overlay */
+    width: 75%;
+    /* Largura do overlay */
+    height: 100%;
+    /* Altura do overlay */
+    background-color: rgba(0, 0, 0, 0.2);
+    /* Overlay preto com opacidade de 20% */
+    z-index: -1;
+    /* Coloca o overlay atrás do conteúdo */
+    border-radius: 25px;
+    /* Mantém o raio de borda */
+}
+
+/* Estiliza a foto do card de destaque */
+.card-oportunidade-destaque-photo, .card-destaque-regular-photo{
+    position: relative;
+    /* Posicionamento relativo */
+    width: 100%;
+    /* Largura total */
+    height: 300px;
+    /* Altura da foto */
+    overflow: hidden;
+    /* Oculta conteúdo excedente */
+}
+
+/* Estiliza a imagem dentro da foto do card de destaque */
+.card-oportunidade-destaque-photo img, .card-destaque-regular-photo img {
+    width: 100%;
+    /* Largura total */
+    height: 100%;
+    /* Altura total */
+    object-fit: cover;
+    /* Ajusta a imagem para cobrir o contêiner */
+    object-position: center;
+    /* Centraliza a imagem */
+    border-radius: 25px;
+    /* Bordas arredondadas */
+}
+
+/* Estiliza o conteúdo do card de destaque */
+.card-oportunidade-destaque-content, .card-destaque-regular-content {
+    padding: 20px;
+    /* Espaçamento interno (padding) */
+    z-index: 2;
+    /* Coloca o conteúdo acima do overlay */
+}
+
+/* Remove a margem padrão dos elementos h2 e p dentro do conteúdo do card de destaque */
+.card-oportunidade-destaque-content h2,
+.card-oportunidade-destaque-content p {
+    margin: 0;
+}
+
+/* Estiliza o badge de vagas */
+.vagas-badge {
+    position: absolute;
+    /* Posicionamento absoluto */
+    bottom: 10px;
+    /* Distância do fundo */
+    right: 10px;
+    /* Distância da direita */
+    background-color: var(--laranja-primario);
+    /* Cor de fundo vermelha */
+    color: var(--branco);
+    /* Cor do texto branca */
+    padding: 5px 10px;
+    /* Espaçamento interno (padding) */
+    border-radius: 25px;
+    /* Bordas arredondadas */
+}
+
+// /* Estiliza o card regular de destaque */
+// .card-destaque-regular {
+//     position: relative;
+//     /* Posicionamento relativo */
+//     height: 100%;
+//     /* Altura do card */
+//     box-sizing: border-box;
+//     /* Inclui padding e borda no tamanho total */
+//     overflow: hidden;
+//     /* Oculta conteúdo excedente */
+//     display: flex;
+//     /* Usa flexbox para layout interno */
+//     justify-content: center;
+//     /* Centraliza o conteúdo */
+//     margin-bottom: 20px;
+//     /* Margem inferior */
+// }
+
+/* Estiliza a caixa cinza */
+.gray-box {
+    background-color: var(--cinza3);
+    /* Cor de fundo cinza */
+    opacity: 80%;
+    /* Opacidade da caixa */
+    padding: 0px 20px;
+    /* Espaçamento interno (padding) */
+    text-align: center;
+    /* Alinhamento do texto */
+    position: absolute;
+    /* Posicionamento absoluto */
+    left: 50%;
+    /* Centraliza horizontalmente */
+    transform: translateX(-50%);
+    /* Ajusta a posição centralizada */
+    z-index: 1;
+    /* Coloca a caixa acima de outros elementos */
+    border-radius: 25px;
+    /* Bordas arredondadas */
+    // white-space: nowrap;
+    // /* Impede quebra de linha */
+    overflow: hidden;
+    /* Oculta conteúdo excedente */
+    text-overflow: ellipsis;
+    /* Adiciona reticências para texto longo */
+    width: 60%;
+    /* Largura da caixa */
+    margin-top: 10px;
+}
+
+// /* Estiliza a foto do card regular de destaque */
+// .card-destaque-regular-photo {
+//     position: relative;
+//     /* Posicionamento relativo */
+//     width: 100%;
+//     /* Largura total */
+//     // height: 190px;
+//     // /* Altura da foto */
+//     overflow: hidden;
+//     /* Oculta conteúdo excedente */
+//     border-radius: 25px;
+//     /* Bordas arredondadas */
+// }
+
+// /* Estiliza a imagem dentro da foto do card regular de destaque */
+// .card-destaque-regular-photo img {
+//     width: 100%;
+//     /* Largura total */
+//     height: 100%;
+//     /* Altura total */
+//     object-fit: cover;
+//     /* Ajusta a imagem para cobrir o contêiner */
+// }
+
+// /* Estiliza o conteúdo do card regular de destaque */
+// .card-destaque-regular-content {
+//     padding: 20px;
+//     /* Espaçamento interno (padding) */
+//     z-index: 2;
+//     /* Coloca o conteúdo acima de outros elementos */
+// }
+
+// /* Remove a margem padrão do parágrafo dentro do conteúdo do card regular de destaque */
+// .card-destaque-regular-content p {
+//     margin: 0;
+// }
+
+/* Estiliza a seção de imagem no popup */
+.popUp-imagem {
+    display: flex;
+    /* Usa flexbox para layout interno */
+    justify-content: space-around;
+    /* Distribui os itens com espaço ao redor */
+    align-items: center;
+    /* Alinha os itens no centro verticalmente */
+    margin-bottom: 20px;
+    /* Margem inferior */
+    margin-left: 10px;
+    /* Margem à esquerda */
+}
+
+/* Estiliza as imagens dentro da seção de imagem do popup */
+.popUp-imagem img {
+    width: 50%;
+    /* Largura das imagens */
+    height: auto;
+    /* Altura automática */
+    object-fit: contain;
+    /* Ajusta a imagem para caber dentro do contêiner */
+}
+
+/* Estiliza as tags no popup */
+.popUp-tags {
+    display: flex;
+    /* Usa flexbox para layout interno */
+    justify-content: space-around;
+    /* Distribui os itens com espaço ao redor */
+    align-items: center;
+    /* Alinha os itens no centro verticalmente */
+    margin: 10px 0;
+    /* Margem vertical */
+    color: var(--branco);
+}
+
+
+
+/* Estiliza a oportunidade no popup */
+.popupoportunidade {
+    background-color: var(--cinza3);
+    /* Cor de fundo cinza claro */
+}
+
+/* Estiliza os parágrafos dentro da oportunidade no popup */
+.popupoportunidade p {
+    color: var(--azul-primario);
+    /* Cor do texto azul escuro */
+}
+/* Estiliza os parágrafos dentro das tags do popup */
+.popUp-tags p {
+    background-color: var(--laranja-primario);
+    /* Cor de fundo laranja */
+    padding: 10px 20px;
+    /* Espaçamento interno (padding) */
+    color: var(--branco);
+    /* Cor do texto branca */
+    border-radius: 10px;
+    /* Bordas arredondadas */
+}
+/* Estiliza a avaliação no popup */
+.popUp-avaliacao {
+    display: flex;
+    /* Usa flexbox para layout interno */
+    justify-content: space-around;
+    /* Distribui os itens com espaço ao redor */
+    align-items: center;
+    /* Alinha os itens no centro verticalmente */
+    background-color: var(--amarelo-primario);
+    /* Cor de fundo amarela */
+    padding: 10px 20px;
+    /* Espaçamento interno (padding) */
+    color: var(--branco);
+    /* Cor do texto branca */
+    border-radius: 10px;
+    /* Bordas arredondadas */
+    margin-bottom: 16px;
+    /* Margem inferior */
+}
+
+/* Remove a margem e padding dos parágrafos dentro da avaliação no popup */
+.popUp-avaliacao p {
+    background-color: var(--amarelo-primario);
+    /* Cor de fundo amarela */
+    padding: 0;
+    margin: 0;
+}
+.popUp-conteudo{
+    color: var(--azul-primario);
+}
+
+/* Estiliza os spans dentro dos parágrafos no conteúdo do popup */
+.popUp-conteudo p span {
+    font-weight: bold;
+    /* Texto em negrito */
+}
+
+/* Estiliza os botões dentro da oportunidade no popup */
+.popupoportunidade button {
+    background-color: var(--laranja-primario);
+    /* Cor de fundo laranja */
+    color: var(--branco);
+    /* Cor do texto branca */
+    border: none;
+    /* Remove a borda */
+    padding: 10px 20px;
+    /* Espaçamento interno (padding) */
+    border-radius: 10px;
+    /* Bordas arredondadas */
+    margin: 10px 0;
+    /* Margem vertical */
+}
+
+/* Estiliza a seção de informações no popup */
+.popUp-info {
+    display: flex;
+    /* Usa flexbox para layout interno */
+    justify-content: space-around;
+    /* Distribui os itens com espaço ao redor */
+    align-items: center;
+    /* Alinha os itens no centro verticalmente */
+    flex-wrap: wrap;
+}
+
+/* Estiliza os parágrafos dentro da seção de informações no popup */
+.popUp-info p {
+    color: var(--branco);
+    /* Cor do texto branca */
+    background-color: var(--azul-primario);
+    /* Cor de fundo azul escuro */
+    padding: 5px;
+    /* Espaçamento interno (padding) */
+    /* Borda */
+    border-radius: 10px;
+}

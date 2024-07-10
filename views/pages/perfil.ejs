@@ -1,0 +1,451 @@
+<script>
+  // Verificar se o usuário já está logado
+  document.addEventListener("DOMContentLoaded", function () {
+    const userID = getCookie('userID');
+    if (!userID) {
+      // Redireciona o usuário para a página principal se já estiver logado
+      window.location.href = "/";
+    }
+  });
+</script>
+<div id="box">
+  <h1 class="titulo">Altere ou complete o seu perfil!</h1>
+  <div id="recursos-perfil">
+    <div class="perfil__imagem">
+      <img src="images/foto-perfil.png" id='fotoPerfil' alt="Imagem Principal" class="imagem-principal">
+      <input type="file" id="file-upload" class="input-file" accept="image/*" multiple hidden>
+      <label for="file-upload" class="icone__editar">
+        <img src="images/icone_editar.svg" alt="icone de editar">
+      </label>
+    </div>
+    <br>
+    <div class="mascote">
+      <div id="oppo">
+        <img src="images/oppo.png" alt="Imagem do Oppo">
+      </div>
+      <a href="/oppo">
+        <img class="editar-oppo-icone" src="images/editar-oppo-icon.svg" alt="icone de editar o oppo">
+      </a>
+    </div>
+  </div>
+  <script>
+    fetch('/perfil/' + userID, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('Erro ao buscar dados do perfil')
+      }
+      return response.json()
+    }).then(data => {
+      console.log(data);
+      document.getElementById('nome').value = data.nome;
+      document.getElementById('email').value = data.email;
+      document.getElementById('telefone').value = data.telefone;
+      document.getElementById('dataNascimento').value = data.data_nascimento;
+      document.getElementById('descricao').value = data.motivacao;
+      document.getElementById('areaInteresse').value = data.areas_interesse;
+      document.getElementById('cep').value = data.cep;
+    }).catch(error => {
+      console.error('Error:', error);
+    })
+  </script>
+  <form id="updateForm">
+    <!-- Campo de texto para o nome -->
+    <label class="legenda" for="nome">Nome:</label><br>
+    <input class="inputText" type="text" id="nome" name="nome" placeholder="ex.: Fernanda Costa" required>
+
+    <!-- Campo de e-mail -->
+    <label class="legenda" for="email">Email:</label><br>
+    <input class="inputText" type="email" id="email" name="email" placeholder="ex.: fe@gmail.com" required>
+
+    <!-- Campo de telefone -->
+    <label class="legenda" for="telefone">Telefone:</label><br>
+    <input class="inputText" type="tel" id="telefone" name="telefone" placeholder="ex.: 11 98888-8888">
+
+    <!-- Campo de senha -->
+    <label class="legenda" for="dataNascimento">Data de nascimento:</label><br>
+    <input class="inputText" type="date" id="dataNascimento" name="dataNascimento" required>
+
+    <!-- CEP -->
+    <label class="legenda" for="cep">CEP:</label><br>
+    <input class="inputText" type="text" id="cep" name="cep" placeholder="ex.: 01001000">
+
+    <!-- Área de texto para descrição -->
+    <label class="legenda" for="descricao">Descrição:</label><br>
+    <textarea class="inputText inputDesc" id="descricao" name="descricaoPerfil" rows="4" cols="50"
+      placeholder="Coloque aqui uma breve descrição de você. Seus interesses, suas experiências, o porquê você entrou no ambiente de voluntariado."></textarea>
+
+    <!-- Menu de seleção -->
+    <label class="legenda" for="areaInteresse">Área de interesse:</label><br>
+    <select class="inputText" id="areaInteresse" name="areaInteresse">
+      <option id="selecioneOpcao" value="selecione"><em>Selecione a sua área de interesse</em></option>
+      <option value="marketing">Marketing</option>
+      <option value="logistica">Logística</option>
+      <option value="administracao">Administração</option>
+      <option value="suporte-tecnico">Suporte Técnico</option>
+      <option value="outros">Outros</option>
+    </select>
+
+    <!-- Botões de opção (radio buttons) -->
+    <p class="legenda">Você deseja publicar o seu perfil na página de voluntários?</p>
+    <div class="opcoesPublicacao">
+      <input type="radio" id="publicar-perfil-sim" name="publicar_perfil" value="true">
+      <label for="publicar-perfil">Sim</label>
+      <input type="radio" id="publicar-perfil-sim" name="publicar_perfil" value="false">
+      <label for="publicar-perfil">Não</label>
+    </div>
+
+    <!-- Botão de envio -->
+    <input onclick="alertaSucessoPerfil()" class="enviarButton" type="submit" value="Salvar">
+
+  </form>
+  <br><br>
+  <h2 class="subtitulo">Minhas Oportunidades</h2>
+  <div id="carouselOpportunitiesControls" class="carousel" data-bs-ride="carousel">
+    <div class="carousel-inner mx-auto">
+      <!-- Item ativo do carrossel -->
+      <div class="carousel-item active">
+        <button id="popupButton" class="carousel-button"><img src="images/oportunidade-blank.png" id="carousel1"
+            class="d-block w-100" alt="..."></button>
+      </div>
+    </div>
+
+    <!-- Botão de controle do carrossel para o item anterior -->
+    <button class="carousel-control-prev position-absolute top-50 translate-middle-y ms-4" type="button"
+      data-bs-target="#carouselOpportunitiesControls" data-bs-slide="prev" style="left: -2rem;">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <!-- Botão de controle do carrossel para o próximo item -->
+    <button class="carousel-control-next position-absolute top-50 translate-middle-y me-4" type="button"
+      data-bs-target="#carouselOpportunitiesControls" data-bs-slide="next" style="right: -2rem;">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <h2 class="subtitulo">Minhas Organizações</h2>
+
+  <div id="carouselOpportunitiesControls" class="carousel" data-bs-ride="carousel">
+    <div class="carousel-inner mx-auto">
+      <!-- Item ativo do carrossel -->
+      <div class="carousel-item active">
+        <button id="popupButtonOSC" class="carousel-button"><img src="images/oportunidade-blank.png" id="carousel1"
+            class="d-block w-100" alt="..."></button>
+      </div>
+    </div>
+
+    <!-- Botão de controle do carrossel para o item anterior -->
+    <button class="carousel-control-prev position-absolute top-50 translate-middle-y ms-4" type="button"
+      data-bs-target="#carouselOpportunitiesControls" data-bs-slide="prev" style="left: -2rem;">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <!-- Botão de controle do carrossel para o próximo item -->
+    <button class="carousel-control-next position-absolute top-50 translate-middle-y me-4" type="button"
+      data-bs-target="#carouselOpportunitiesControls" data-bs-slide="next" style="right: -2rem;">
+
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+</div>
+
+<!-- pop up de criação de oportunidade -->
+<div id="popupOverlay" class="popup-overlay" style="display: none;"></div>
+<div id="popup" class="popup" style="display: none;">
+  <div class="popup__imagem">
+    <!-- imagem da oportunidade -->
+    <img src="images/oportunidade-blank.png" id="capaOp" alt="Imagem Oportunidade" class="imagem-oportunidade">
+    <!-- botão para editar a imagem -->
+    <button onclick="imagemCapa('imagemCapaOportunidade')" class="imagem__editar">
+      <img src="images/icone_editar.svg" alt="icone de editar">
+    </button>
+  </div>
+
+  <form class="formGeral formOportunidade" id="form-oportunidade" enctype="multipart/form-data">
+
+    <input id='imagemCapaOportunidade' name='imagemCapa' type='file' multiple hidden>
+    <!-- Rótulo para o campo de nome -->
+    <label class="legenda" for="nomeDaVaga">Nome da vaga</label>
+    <!-- Campo de nome -->
+
+    <input class="inputText" id="nomeDaVaga" name="nomeDaVaga" required="required" type="text"
+      placeholder="ex.: Navegador" maxlength="18" />
+    <!-- Rótulo para o campo de nome -->
+    <label class="legenda" for="organizacaoOp">Organização</label>
+    <!-- Campo de nome -->
+    <input class="inputText" id="organizacaoOp" name="organizacaoOp" required="required" type="text"
+      placeholder="ex.: Oportoniza" />
+
+
+    <!-- Rótulo para o campo de nome -->
+    <label class="legenda" for="areasAtuacao">Áreas de Atuação</label>
+    <!-- Campo de nome -->
+    <input class="inputText" id="areasAtuacao" name="areasAtuacao" required="required" type="text"
+      placeholder="ex.: Educação" />
+
+    <!-- Rótulo para o campo de nome -->
+    <label class="legenda" for="descricao">Descrição</label>
+    <!-- Campo de nome -->
+    <textarea class="inputText" id="descricaoOportunidade" name="descricaoOp" required="required"
+      placeholder="ex.: Coloque aqui os requisitos, o link da plataforma, o meio de contato e qualquer outra informação que seja útil para a ação."></textarea>
+
+    <label class="legenda" for="ODS">ODS:</label>
+    <select class="inputText" id="ODS" name="ODS">
+      <option value="selecione-ods">Selecione o ODS</option>
+      <option value="erradicacao-da-pobreza">ODS 1: Erradicação da Pobreza</option>
+      <option value="fome-zero-e-agricultura-sustentavel">ODS 2: Fome Zero e Agricultura Sustentável</option>
+      <option value="saude-e-bem-estar">ODS 3: Saúde e Bem-estar</option>
+      <option value="educacao-de-qualidade">ODS 4: Educação de Qualidade</option>
+      <option value="igualdade-de-genero">ODS 5: Igualdade de Gênero</option>
+      <option value="agua-potavel-e-saneamento">ODS 6: Água Potável e Saneamento</option>
+      <option value="energia-acessivel-e-limpa">ODS 7: Energia Acessível e Limpa</option>
+      <option value="trabalho-decente-e-crescimento-economico">ODS 8: Trabalho Decente e Crescimento Econômico</option>
+      <option value="industria-inovacao-e-infraestrutura">ODS 9: Indústria, Inovação e Infraestrutura</option>
+      <option value="reducao-das-desigualdades">ODS 10: Redução das Desigualdades</option>
+      <option value="cidades-e-comunidades-sustentaveis">ODS 11: Cidades e Comunidades Sustentáveis</option>
+      <option value="consumo-e-producao-responsaveis">ODS 12: Consumo e Produção Responsáveis</option>
+      <option value="acao-contra-a-mudanca-global-do-clima">ODS 13: Ação contra a Mudança Global do Clima</option>
+      <option value="vida-na-agua">ODS 14: Vida na Água</option>
+      <option value="vida-terrestre">ODS 15: Vida Terrestre</option>
+      <option value="paz-justica-e-instituicoes-eficazes">ODS 16: Paz, Justiça e Instituições Eficazes</option>
+      <option value="parcerias-e-meios-de-implementacao">ODS 17: Parcerias e Meios de Implementação</option>
+    </select>
+
+
+
+    <label class="legenda" for="prazo">Prazo de inscrição</label>
+
+    <input class="inputText" id="prazo" name="prazo" required="required" type="date" />
+
+    <label class="legenda" for="NumeroVagas">Número de vagas</label>
+
+    <input class="inputText" id="NumeroVagas" name="NumeroVagas" required="required" type="text" placeholder="ex.: 5" />
+
+    <label class="legenda" for="beneficiarios">Número de beneficiários</label>
+
+    <input class="inputText" id="beneficiarios" name="beneficiarios" required="required" type="text"
+      placeholder="ex.: 20" />
+
+    <label class="legenda" for="voluntarios">Número de voluntários ativos</label>
+
+    <input class="inputText" id="voluntarios" name="voluntarios" required="required" type="text"
+      placeholder="ex.: 15" />
+
+    <label class="legenda" for="perguntas">Perguntas do processo seletivo</label>
+
+    <input class="inputText" id="perguntas" type="text" placeholder="ex.: Porque você se interessa na nossa vaga?" />
+
+    <div class="inputOportunidade uploadButton">
+      <label class="legenda" for="imagens">Coloque uma imagem da ação</label>
+      <input class="inputText" name="imagem" id="imagem" multiple type="file" />
+    </div>
+    <input onclick="alertaCriarOportunidade()" class="enviarButton" type="submit" value="Salvar">
+  </form>
+</div>
+
+<!-- pop up de criação de osc -->
+<div id="popupOverlayOSC" class="popup-overlay" style="display: none;"></div>
+<div id="popupOSC" class="popup" style="display: none;">
+  <div class="popup__imagem">
+    <!-- imagem da osc -->
+    <img src="images/oportunidade-blank.png" id="capaOSC" alt="Imagem OSC" class="imagem-oportunidade">
+    <button onclick="imagemCapa('imagemCapaOSC')" class="imagem__editar">
+      <!-- botão para editar a imagem -->
+      <img src="images/icone_editar.svg" alt="icone de editar">
+    </button>
+  </div>
+
+  <form class="formGeral formOportunidade" id="formOSC" enctype="multipart/form-data">
+
+    <div>
+      <input type="file" name="imagem" id="imagemCapaOSC" multiple hidden>
+      <!-- Rótulo para o campo de nome -->
+      <label class="legenda" for="nomeDaOSC">Nome da OSC</label>
+      <!-- Campo de nome -->
+      <input class="inputText" id="nomeDaOSC" name="nomeDaOSC" required="required" type="text"
+        placeholder="ex.: Oportoniza" />
+
+      <!-- Rótulo para o campo de nome -->
+      <label class="legenda" for="organizacao">Organização</label>
+      <!-- Campo de nome -->
+      <input class="inputText" id="organizacaoOSC" name="organizacaoOSC" required="required" type="text"
+        placeholder="ex.: Fundação Oportoniza" />
+
+      <!-- Rótulo para o campo de nome -->
+      <label class="legenda" for="areasAtuacaoOSC">Áreas de Atuação</label>
+      <!-- Campo de nome -->
+      <input class="inputText" id="areasAtuacaoOSC" name="areasAtuacaoOSC" required="required" type="text"
+        placeholder="ex.: Educação" />
+
+      <!-- Rótulo para o campo de nome -->
+      <label class="legenda" for="descricaoOSC">Descrição</label>
+      <!-- Campo de nome -->
+
+      <textarea class="inputText inputDesc" id="descricaoOSC" name="descricaoOSC" required="required"
+        placeholder="ex.: Coloque aqui os requisitos, o link da plataforma, o meio de contato e qualquer outra informação que seja útil para a ação."></textarea>
+
+
+      <input onclick="alertaCriarOrganização()" class="enviarButton" type="submit" value="Salvar">
+  </form>
+</div>
+
+
+
+
+<script>
+
+  document.getElementById('form-oportunidade').addEventListener('submit', function (event) {
+    event.preventDefault();
+    let formData = new FormData(event.target);
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ': ' + pair[1]);
+    }
+    fetch('/oportunidade', {
+      method: 'POST',
+      body: formData,
+    })
+      .then(response => {
+        if (!response.ok) {
+          console.log(response)
+          throw new Error(response.statusText)
+        }
+        console.log(response);
+        return response.json()
+      })
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  });
+
+  document.getElementById('formOSC').addEventListener('submit', function (event) {
+    event.preventDefault();
+    let formDataOSC = new FormData(document.getElementById('formOSC'));
+    for (let [key, value] of formDataOSC.entries()) {
+      console.log(`${key}: ${value}`);
+    }
+    fetch('/new-org', {
+      method: 'POST',
+      body: formDataOSC,
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('Erro ao criar nova organização')
+      }
+      return response.json()
+    }).then(data => {
+      console.log('Success:', data);
+    }).catch(error => {
+      console.error('Error:', error);
+
+    })
+  })
+  document.getElementById('updateForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const form = event.target;
+    let formData = new FormData(form);
+
+    fetch(`/atualizarCadastro/${userID}`, {
+      method: 'PUT',
+      body: formData,
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro ao atualizar o perfil')
+        }
+        return response.json();
+      }
+      )
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  });
+
+  // código para abrir e fechar os popups
+  document.addEventListener('DOMContentLoaded', function () {
+    const popupButton = document.getElementById('popupButton');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const popup = document.getElementById('popup');
+
+    const popupButtonOSC = document.getElementById('popupButtonOSC');
+    const popupOverlayOSC = document.getElementById('popupOverlayOSC');
+    const popupOSC = document.getElementById('popupOSC');
+
+    //abrir o popup oportunidade
+    popupButton.addEventListener('click', function () {
+      console.log("Chamou botão de oportunidade")
+      popupOverlay.style.display = 'block';
+      popup.style.display = 'block';
+    });
+
+    //fechar o popup oportunidade
+    popupOverlay.addEventListener('click', function () {
+      console.log("Chamou botão de OSC")
+      popupOverlay.style.display = 'none';
+      popup.style.display = 'none';
+    });
+
+    //abrir o popup OSC
+    popupButtonOSC.addEventListener('click', function () {
+      popupOverlayOSC.style.display = 'block';
+      popupOSC.style.display = 'block';
+    });
+
+    //fechar o popup OSC
+    popupOverlayOSC.addEventListener('click', function () {
+      popupOverlayOSC.style.display = 'none';
+      popupOSC.style.display = 'none';
+    });
+  });
+</script>
+
+<script>
+  function alertaSucessoPerfil() {
+    alert('Você salvou o seu perfil.');
+  }
+
+  function alertaCriarOportunidade() {
+    alert('Você criou uma oportunidade. Visualize-a na aba "Oportunidades".');
+  }
+
+  function alertaCriarOrganização() {
+    alert('Você publicou uma organização. Visualize-a na aba "OSCs".');
+  }
+
+  function inProgress() {
+    alert('Processo em desenvolvimento.');
+  }
+  function imagemCapa(capa) {
+    document.getElementById(capa).click();
+  }
+  document.getElementById('imagemCapaOportunidade').addEventListener('change', function (e) {
+    if (e.target.files[0]) {
+      document.getElementById('capaOp').src = URL.createObjectURL(e.target.files[0])
+    }
+
+  });
+  document.getElementById('imagemCapaOSC').addEventListener('change', function (e) {
+    if (e.target.files[0]) {
+      document.getElementById('capaOSC').src = URL.createObjectURL(e.target.files[0])
+    }
+
+  });
+  document.getElementById('file-upload').addEventListener('change', function (e) {
+    if (e.target.files[0]) {
+      document.getElementById('fotoPerfil').src = URL.createObjectURL(e.target.files[0])
+    }
+
+  });
+
+</script>

@@ -1,0 +1,266 @@
+<body class="bodyHome">
+  <!-- parte inicial da home -->
+  <div class="container mt-3">
+    <!-- Versão Mobile -->
+    <div class="d-block d-md-none text-center">
+      <div class="position-relative">
+        <!-- imagem principal da homepage -->
+        <img src="/images/Mulher-Home-page.png" alt="Mulher Home" class="img-fluid mx-auto d-block">
+      </div>
+      <div class="text-container text-center fw-bold mt-3">
+        <!-- texto convidativo para a pagina -->
+        <h1>O seu <span style="color: var(--azul-primario);">porto</span> em meio ao <span
+            style="color: var(--azul-primario);">mar</span> de oportunidades do <span
+            style="color: var(--azul-primario);">voluntariado</span></h1>
+      </div>
+      <div class="text-center">
+        <!-- botão para ação de ir pesquisar oportunidades -->
+        <a href="/oportunidades" class="btn btn-custom btHome text-light" role="button">Vamos nessa!</a>
+      </div>
+    </div>
+    <!-- Versão Desktop -->
+    <div class="d-none d-md-flex justify-content-center align-items-center">
+      <div class="col-md-6 text-md-start">
+        <div class="text-container text-center text-md-start fw-bold">
+          <!-- texto convidativo para a pagina -->
+          <h1>O seu <span style="color: var(--azul-primario);">porto</span> em meio ao <span
+              style="color: var(--azul-primario);">mar</span> de oportunidades do <span
+              style="color: var(--azul-primario);">voluntariado</span></h1>
+        </div>
+        <div class="text-center text-md-start">
+          <!-- botão para ação de ir pesquisar oportunidades -->
+          <a href="/oportunidades" class="btn btn-custom btHome text-light" role="button">Vamos nessa!</a>
+        </div>
+      </div>
+      <div class="container">
+            <div class="w-400">
+                <img src="images/Mulher-Home-page.png" alt="Mulher Home" class="img-fluid float-right">
+        </div>
+    </div>
+    </div>
+  </div>
+  <!-- carrossel de ods -->
+  <section class="carrossel carrosselOds">
+    <!-- container principal do slider -->
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <!-- cards de ODSs -->
+        <div class="swiper-slide card-destaque-regular card-voluntario">
+          <!-- imagem da ODS -->
+          <img src="images/card-ods1.svg" class="cardOds" alt="...">
+        </div>
+        <div class="swiper-slide card-destaque-regular card-voluntario">
+          <!-- imagem da ODS -->
+          <img src="images/card-ods2.svg" class="cardOds" alt="...">
+        </div>
+        <div class="swiper-slide card-destaque-regular card-voluntario">
+          <!-- imagem da ODS -->
+          <img src="images/card-ods3.svg" class="cardOds" alt="...">
+        </div>
+        <div class="swiper-slide card-destaque-regular card-voluntario">
+          <!-- imagem da ODS -->
+          <img src="images/card-ods1.svg" class="cardOds" alt="...">
+        </div>
+        <div class="swiper-slide card-destaque-regular card-voluntario">
+          <!-- imagem da ODS -->
+          <img src="images/card-ods2.svg" class="cardOds" alt="...">
+        </div>
+        <div class="swiper-slide card-destaque-regular card-voluntario">
+          <!-- imagem da ODS -->
+          <img src="images/card-ods3.svg" class="cardOds" alt="...">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- container de tópicos -->
+  <div class="container mt-5 containerTopicos">
+    <div class="row justify-content-center topicosHome">
+      <div class="col-12 d-flex justify-content-around flex-wrap mt-4">
+        <!-- tópicos que aparecem acima da barra de pesquisa -->
+        <button onclick="mostrarAlerta()" class="btn btn-custom category-badge category-educacao">Educação</button>
+        <button onclick="mostrarAlerta()" class="btn btn-custom category-badge category-animais">Animais</button>
+        <button onclick="mostrarAlerta()" class="btn btn-custom category-badge category-arte">Arte</button>
+      </div>
+      
+      <div class="col-12 d-flex justify-content-around flex-wrap mb-4">
+         <div class="container mt-5">
+        <!-- Barra de busca -->
+        <div class="search-bar">
+            <!-- Campo de entrada de texto com um placeholder -->
+            <input type="text" placeholder="Pesquise aqui" id="searchInput">
+            <!-- Ícone de pesquisa ao lado do campo de texto -->
+            <img src="images/icone-pesquisa.png" alt="Search Icon">
+        </div>
+    </div>
+        <!-- tópicos que aparecem abaixo da barra de pesquisa -->
+        <button onclick="mostrarAlerta()" class="btn btn-custom category-badge category-meio-ambiente">Meio
+          Ambiente</button>
+        <button onclick="mostrarAlerta()" class="btn btn-custom category-badge category-politica">Política</button>
+        <button onclick="mostrarAlerta()" class="btn btn-custom category-badge category-saude">Saúde</button>
+      </div>
+    </div>
+  </div>
+  <!-- carrossel de histórias de sucesso -->
+  <section class="carrossel carrossel-hist-sucess">
+    <h2 class="carrossel__titulo">Histórias de Sucesso</h2>
+    <!-- container principal do slider -->
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <!-- cards de histórias de sucesso -->
+        <div class="swiper-slide card-destaque-regular card-voluntario">
+          <div class="card-oportunidade card-vol-osc-padrao">
+            <div class="card-destaque-regular-photo card-vol-osc-padrao-photo">
+              <!-- imagem do card -->
+              <img src="images/histSuces1.png" alt="Foto da Vaga">
+            </div>
+            <div class="card-destaque-regular-content card-vol-osc-padrao-content card-hist-sucess">
+              <!-- nome da pessoa -->
+              <h3>Juliana Macedo</h3>
+              <!-- descrição da história -->
+              <p class="descricao">“Eu tinha muitas roupas da infância no meu guarda-roupa e eu as ia descartar até
+                que...”</p>
+              <div class="ler-mais">
+                <!-- botão para ler mais -->
+                <a href="#" class="informacao-extra">Ler Mais</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide card-destaque-regular card-voluntario">
+          <div class="card-oportunidade card-vol-osc-padrao">
+            <div class="card-destaque-regular-photo card-vol-osc-padrao-photo">
+              <!-- imagem do card -->
+              <img src="images/histSuces2.png" alt="Foto da Vaga">
+            </div>
+            <div class="card-destaque-regular-content card-vol-osc-padrao-content card-hist-sucess">
+              <!-- nome da pessoa -->
+              <h3>Pedro Silva</h3>
+              <!-- descrição da história -->
+              <p class="descricao">“Quando me mudei para uma cidade grande, me senti muito deslocado...”</p>
+              <div class="ler-mais">
+                <!-- botão para ler mais -->
+                <a href="#" class="informacao-extra">Ler Mais</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="swiper-slide card-destaque-regular card-voluntario">
+          <div class="card-oportunidade card-vol-osc-padrao">
+            <div class="card-destaque-regular-photo card-vol-osc-padrao-photo">
+              <!-- imagem do card -->
+              <img src="images/histSuces3.png" alt="Foto da Vaga">
+            </div>
+            <div class="card-destaque-regular-content card-vol-osc-padrao-content card-hist-sucess">
+              <!-- nome da pessoa -->
+              <h3>Silvia Menezes</h3>
+              <!-- descrição da história -->
+              <p class="descricao">“O voluntariado transformou minhas tardes de sábado. Tive a oportunidade...”</p>
+              <div class="ler-mais">
+                <!-- botão para ler mais -->
+                <a href="#" class="informacao-extra">Ler Mais</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide card-destaque-regular card-voluntario">
+          <div class="card-oportunidade card-vol-osc-padrao">
+            <div class="card-destaque-regular-photo card-vol-osc-padrao-photo">
+              <!-- imagem do card -->
+              <img src="images/histSuces1.png" alt="Foto da Vaga">
+            </div>
+            <div class="card-destaque-regular-content card-vol-osc-padrao-content card-hist-sucess">
+              <!-- nome da pessoa -->
+              <h3>Juliana Macedo</h3>
+              <!-- descrição da história -->
+              <p class="descricao">“Eu tinha muitas roupas da infância no meu guarda-roupa e eu as ia descartar até
+                que...”</p>
+              <div class="ler-mais">
+                <!-- botão para ler mais -->
+                <a href="#" class="informacao-extra">Ler Mais</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide card-destaque-regular card-voluntario">
+          <div class="card-oportunidade card-vol-osc-padrao">
+            <div class="card-destaque-regular-photo card-vol-osc-padrao-photo">
+              <!-- imagem do card -->
+              <img src="images/histSuces2.png" alt="Foto da Vaga">
+            </div>
+            <div class="card-destaque-regular-content card-vol-osc-padrao-content card-hist-sucess">
+              <!-- nome da pessoa -->
+              <h3>Pedro Silva</h3>
+              <!-- descrição da história -->
+              <p class="descricao">“Quando me mudei para uma cidade grande, me senti muito deslocado...”</p>
+              <div class="ler-mais">
+                <!-- botão para ler mais -->
+                <a href="#" class="informacao-extra">Ler Mais</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide card-destaque-regular card-voluntario">
+          <div class="card-oportunidade card-vol-osc-padrao">
+            <div class="card-destaque-regular-photo card-vol-osc-padrao-photo">
+              <!-- imagem do card -->
+              <img src="images/histSuces3.png" alt="Foto da Vaga">
+            </div>
+            <div class="card-destaque-regular-content card-vol-osc-padrao-content card-hist-sucess">
+              <!-- nome da pessoa -->
+              <h3>Silvia Menezes</h3>
+              <!-- descrição da história -->
+              <p class="descricao">“O voluntariado transformou minhas tardes de sábado. Tive a oportunidade...”</p>
+              <div class="ler-mais">
+                <!-- botão para ler mais -->
+                <a href="#" class="informacao-extra">Ler Mais</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script>
+  document.getElementById('searchInput').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      alert('Em construção');
+      event.target.value = '';  // Limpa o campo de entrada
+    }
+  });
+</script>
+
+  <script>
+    function mostrarAlerta() {
+      alert('Processo em construção.');
+    }
+  </script>
+  <!-- importa a biblioteca Swiper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- configura o carrossel -->
+  <script>
+    const swiper = new Swiper('.swiper', {
+      spaceBetween: 0, // Espaço entre os slides
+      autoplay: {
+        delay: 3000, // tempo entre um slide e outro
+      },
+      loop: true, // Faz o carrossel voltar ao início quando chega no último slide
+      // breakpoints para ajustar o número de slides exibidos de acordo com o tamanho da tela
+      breakpoints: {
+        // quando a tela for menor que 768px
+        0: {
+          slidesPerView: 1.5,
+        },
+        // quando a tela for maior ou igual a 768px
+        768: {
+          slidesPerView: 4,
+        }
+      },
+      centeredSlides: true // Centraliza o slide ativo
+    });
+  </script>
+</body>
